@@ -17,22 +17,27 @@ class UserController extends AbstractController
         [
             'id'    => '1',
             'email' => 'ipz231_gdi1@student.ztu.edu.ua',
+            'name'  => 'Victor', 
         ],
         [
             'id'    => '2',
             'email' => 'ipz231_gdi2@student.ztu.edu.ua',
+            'name'  => 'Perto', 
         ],
         [
             'id'    => '3',
             'email' => 'ipz231_gdi3@student.ztu.edu.ua',
+            'name'  => 'John', 
         ],
         [
             'id'    => '4',
             'email' => 'ipz231_gdi4@student.ztu.edu.ua',
+            'name'  => 'Dan', 
         ],
         [
             'id'    => '5',
             'email' => 'ipz231_gdi5@student.ztu.edu.ua',
+            'name'  => 'Brandon', 
         ],
     ];
 
@@ -58,6 +63,9 @@ class UserController extends AbstractController
     {
         $requestData = json_decode($request->getContent(), true);
 
+        if (!isset($requestData['email'], $requestData['name'])) {
+            throw new UnprocessableEntityHttpException("name and email are required");
+        }
         if (!filter_var($requestData['email'], FILTER_VALIDATE_EMAIL)) {
             throw new UnprocessableEntityHttpException("valid email is required");
         }
@@ -66,10 +74,11 @@ class UserController extends AbstractController
 
         $user = [
             'id'    => $last_id + 1,
-            'email' => $requestData['email']
+            'name'  => $requestData['name'],
+            'email' => $requestData['email'],
         ];
 
-        // FIXME: symfony is stateless, so chagnes wont persist
+        // FIXME: symfony is stateless, so changes wont persist
         self::$TEST_USERS[] = $user;
 
         return new JsonResponse([
@@ -81,7 +90,7 @@ class UserController extends AbstractController
     public function delete_item(string $id): JsonResponse
     {
         $initialCount = count(self::$TEST_USERS);
-        // FIXME: symfony is stateless, so chagnes wont persist
+        // FIXME: symfony is stateless, so changes wont persist
         self::$TEST_USERS = array_filter(self::$TEST_USERS, fn($user) => $user['id'] !== $id);
     
         if (count(self::$TEST_USERS) >= $initialCount) {
@@ -89,6 +98,24 @@ class UserController extends AbstractController
         }
 
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
+    }
+
+
+    #[Route('/users/{id}', name: 'app_update_users', methods: [Request::METHOD_PATCH])]
+    public function updateItem(string $id, Request $request): JsonResponse
+    {
+        $requestData = json_decode($request->getContent(), true);
+
+        if (!isset($requestData['name'])) {
+            throw new UnprocessableEntityHttpException("name is required");
+        }
+
+        $userData = $this->find_user_by_id($id);
+
+        // FIXME: symfony is stateless, so chagnes wont persist
+        $userData['name'] = $requestData['name'];
+
+        return new JsonResponse(['data' => $userData], Response::HTTP_OK);
     }
 
     public function find_user_by_id(string $id): array 
