@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 
 #[Route('/api/v1')]
 class UserController extends AbstractController
@@ -42,6 +44,7 @@ class UserController extends AbstractController
     ];
 
     #[Route('/users', name: 'app_collection_users', methods: [Request::METHOD_GET])]
+    #[IsGranted("ROLE_ADMIN")]
     public function get_collection(): JsonResponse
     {
         return new JsonResponse([
