@@ -1,0 +1,1262 @@
+{
+	"info": {
+		"_postman_id": "7118e26e-0cb2-47b0-9e68-6de7748c92c8",
+		"name": "TechPrakt2025Symfony",
+		"description": "This is an RESTful API for operation on the resourse `users`. We are using JSON format for representing data.\n\nResults of the successful CRUD operatoins are in `data` key\n\n``` json\n{\n    \"data\": ...\n}\n\n ```\n\nWhile all errors are inside the array of `errors` key\n\n``` json\n{\n    \"code\": 401,\n    \"errors\": [...]\n}\n\n ```\n\nAll of the CRUD operations are locked behind an authentication.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41939878"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login_check",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login_check"
+					]
+				},
+				"description": "This endpoint is responsible for authentication. So by providing valid credentials you will receive JWT token that will be working for an 1 hour.\n\nPlace recieved token into Authorization header using Bearer scheme"
+			},
+			"response": [
+				{
+					"name": "User JWT",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login_check",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login_check"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:33:56 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Mzg5NTY4MzYsImV4cCI6MTczODk2MDQzNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidXNlciJ9.BK1I2eiK61DtOTOwqIaG13UcmacSb9WcoARQaUfCjxf8rJ3qBnT00nqos946f4EB1R6kQEvfbdcKk9XCfZKVR93hZggSqxAej-dF6eg1lwedDVheaFB-_KQwK09PfYn7IOjYDqPIFhapu2CZcTBj_UBa73rbtw6lWn6zryavnwRQwzh8xQxIPHbS-KidnpWFosS7V3rISxDRns0D-DoxfvP6KamhtCQ3GSjvDYJxU4zNbRxXbPFdlO96nY4-C7A1_hNdiXZRMKATzRaRqbmOD6hjoyKhyXMrR2FLChil05a7BgAcJJuFLcCYizfFzsUV5Lz4NMn4-TFIY8vT1I1TzQ\"\n}"
+				},
+				{
+					"name": "Admin JWT",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login_check",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login_check"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:48:11 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Mzg5NTc2OTEsImV4cCI6MTczODk2MTI5MSwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluIn0.FXyip25mhDspIHPx1U5BJo6fqjLjYdX5n0iZofCel5DWTsvGpWFXs8GLlm4te5Xcxs7BaLLA4zjV_1eH4ZKXHb2KetVnh7hnRgy8HGAqJaYLE4sYeUC96UbFRCq1JCSHks40RSI7EMftPG_OnxS2cxs-nE9i9hMbWHbj8XvYyIgww9Ti5Iux5w_7M1Ck9l9pWD8iI66tgtSksKPd7avUVBWKExOld9D8f3rJg2AvLL0S6iWc3TdiGuy8kqqE3l1U_nqved-A3z6pZ97oMOz-QTtL_tK9QXm4HPSAX81dGNfnPNJ7vmJ4nBo4t7nNS5a7_fl4YATKgiEFmxnqfj99PQ\"\n}"
+				},
+				{
+					"name": "Invalid credentials",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test\",\n    \"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login_check",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login_check"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:48:27 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Www-Authenticate",
+							"value": "Bearer"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 401,\n    \"message\": \"Invalid credentials.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User Collection",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				},
+				"description": "This endpoint is only available to the admin role, so it's possible to recieve 403 Forbidden.\n\nUse it to get the list of all users."
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:36:01 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"email\": \"ipz231_gdi1@student.ztu.edu.ua\",\n            \"name\": \"Victor\"\n        },\n        {\n            \"id\": \"2\",\n            \"email\": \"ipz231_gdi2@student.ztu.edu.ua\",\n            \"name\": \"Perto\"\n        },\n        {\n            \"id\": \"3\",\n            \"email\": \"ipz231_gdi3@student.ztu.edu.ua\",\n            \"name\": \"John\"\n        },\n        {\n            \"id\": \"4\",\n            \"email\": \"ipz231_gdi4@student.ztu.edu.ua\",\n            \"name\": \"Dan\"\n        },\n        {\n            \"id\": \"5\",\n            \"email\": \"ipz231_gdi5@student.ztu.edu.ua\",\n            \"name\": \"Brandon\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Access Denied",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:35:22 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"code\": 403,\n        \"errors\": [\n            [\n                \"Access Denied by #[IsGranted(\\\"ROLE_ADMIN\\\")] on controller\"\n            ]\n        ]\n    }\n}"
+				},
+				{
+					"name": "Unauthorized",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:38:14 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Www-Authenticate",
+							"value": "Bearer"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 401,\n    \"message\": \"JWT Token not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Mzg5NTY5NTIsImV4cCI6MTczODk2MDU1Miwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluIn0.ZmmPXBuo-LO8gR1YFVC0ARCSHAV207Px4OYtWK6TF-3obHWi48XEJhIU4F7xXH24xsFZn_lCo5O60w5bH7w6hSxEgbsL_sMnH4_DzJmrG3XgK6l7qs2rDitBdF3b7L7ULEP2GiSky-M0A1sIA6D8F4_2-r0rlsksxjdIs-CJIzQvA-9jpb6-24KUsSPVyCM6xRjXyGInaZ6F4VVNM_11Q_uQ5_ZpjJOI6l5nbS9LJTAPekKK6FXLuAovV_yEO_uDQwiEH_UgVvSJpbZypzui4kiH1urN62IikWB0LUJ6Zmzlx8_2ewxGDyvJkMD3KxCBb8iLSIUmbC9Vn7wkDCubxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/users/{{id}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"{{id}}"
+					]
+				},
+				"description": "Use this endpoint to receive data about specific user by id.\n\nIt's possible to receive 404 Not Found if the user does not exists."
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:42:42 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"1\",\n        \"email\": \"ipz231_gdi1@student.ztu.edu.ua\",\n        \"name\": \"Victor\"\n    }\n}"
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users/0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:47:38 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"code\": 404,\n        \"errors\": [\n            [\n                \"User with id 0 not found\"\n            ]\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create User Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Mzg5NTY5NTIsImV4cCI6MTczODk2MDU1Miwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluIn0.ZmmPXBuo-LO8gR1YFVC0ARCSHAV207Px4OYtWK6TF-3obHWi48XEJhIU4F7xXH24xsFZn_lCo5O60w5bH7w6hSxEgbsL_sMnH4_DzJmrG3XgK6l7qs2rDitBdF3b7L7ULEP2GiSky-M0A1sIA6D8F4_2-r0rlsksxjdIs-CJIzQvA-9jpb6-24KUsSPVyCM6xRjXyGInaZ6F4VVNM_11Q_uQ5_ZpjJOI6l5nbS9LJTAPekKK6FXLuAovV_yEO_uDQwiEH_UgVvSJpbZypzui4kiH1urN62IikWB0LUJ6Zmzlx8_2ewxGDyvJkMD3KxCBb8iLSIUmbC9Vn7wkDCubxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Joe\",\n    \"email\": \"joe@\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				},
+				"description": "Use this endpoint to create new users.  \nName and valid emaili are required."
+			},
+			"response": [
+				{
+					"name": "Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Joe\",\n    \"email\": \"joe@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:39:37 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Joe\",\n        \"email\": \"joe@gmail.com\"\n    }\n}"
+				},
+				{
+					"name": "Unprocessable Entity - Name",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"joe@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:46:17 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"code\": 422,\n        \"errors\": [\n            [\n                \"name and email are required\"\n            ]\n        ]\n    }\n}"
+				},
+				{
+					"name": "Unprocessable Entity - Email",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Joe\",\n    \"email\": \"joe@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:46:46 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"code\": 422,\n        \"errors\": [\n            [\n                \"valid email is required\"\n            ]\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit User Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Mzg5NTY5NTIsImV4cCI6MTczODk2MDU1Miwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluIn0.ZmmPXBuo-LO8gR1YFVC0ARCSHAV207Px4OYtWK6TF-3obHWi48XEJhIU4F7xXH24xsFZn_lCo5O60w5bH7w6hSxEgbsL_sMnH4_DzJmrG3XgK6l7qs2rDitBdF3b7L7ULEP2GiSky-M0A1sIA6D8F4_2-r0rlsksxjdIs-CJIzQvA-9jpb6-24KUsSPVyCM6xRjXyGInaZ6F4VVNM_11Q_uQ5_ZpjJOI6l5nbS9LJTAPekKK6FXLuAovV_yEO_uDQwiEH_UgVvSJpbZypzui4kiH1urN62IikWB0LUJ6Zmzlx8_2ewxGDyvJkMD3KxCBb8iLSIUmbC9Vn7wkDCubxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Xi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/users/{{id}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"{{id}}"
+					]
+				},
+				"description": "Use this endpoint to change the name of the user by their id.\n\nName field is required.\n\nIt's possible to receive 404 Not Found if the user does not exists."
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Xi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:41:47 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"1\",\n        \"email\": \"ipz231_gdi1@student.ztu.edu.ua\",\n        \"name\": \"Xi\"\n    }\n}"
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Xi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users/0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:45:22 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"code\": 404,\n        \"errors\": [\n            [\n                \"User with id 0 not found\"\n            ]\n        ]\n    }\n}"
+				},
+				{
+					"name": "Unprocessable Entity",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users/0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"0"
+							]
+						}
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:45:49 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"code\": 422,\n        \"errors\": [\n            [\n                \"name is required\"\n            ]\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete User Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Mzg5NTY5NTIsImV4cCI6MTczODk2MDU1Miwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluIn0.ZmmPXBuo-LO8gR1YFVC0ARCSHAV207Px4OYtWK6TF-3obHWi48XEJhIU4F7xXH24xsFZn_lCo5O60w5bH7w6hSxEgbsL_sMnH4_DzJmrG3XgK6l7qs2rDitBdF3b7L7ULEP2GiSky-M0A1sIA6D8F4_2-r0rlsksxjdIs-CJIzQvA-9jpb6-24KUsSPVyCM6xRjXyGInaZ6F4VVNM_11Q_uQ5_ZpjJOI6l5nbS9LJTAPekKK6FXLuAovV_yEO_uDQwiEH_UgVvSJpbZypzui4kiH1urN62IikWB0LUJ6Zmzlx8_2ewxGDyvJkMD3KxCBb8iLSIUmbC9Vn7wkDCubxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/users/{{id}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"{{id}}"
+					]
+				},
+				"description": "Use this endpoint to delete user by id.\n\nIt's possible to receive 404 Not Found if the user does not exists."
+			},
+			"response": [
+				{
+					"name": "No Content",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:54:34 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/users/0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 19:44:31 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.15"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"code\": 404,\n        \"errors\": [\n            [\n                \"User with id 0 not found\"\n            ]\n        ]\n    }\n}"
+				}
+			]
+		}
+	]
+}
